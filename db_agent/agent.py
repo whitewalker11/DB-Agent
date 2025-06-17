@@ -1,7 +1,8 @@
 # db_agent/__init__.py
 
 from google.adk import Agent
-import config
+from .agent_config import global_instruction, instruction
+
 from .tools.db_tools import ( # Assuming db_tools.py is directly in the tools directory
     run_query,
     list_tables,
@@ -23,8 +24,8 @@ from .tools.db_tools import ( # Assuming db_tools.py is directly in the tools di
 root_agent = Agent(
     name="db_agent",
     model="gemini-2.0-flash",
-    global_instruction=config.global_instruction,
-    instruction=config.instruction,
+    global_instruction=global_instruction,
+    instruction=instruction,
     tools=[
         run_query,
         list_tables,
