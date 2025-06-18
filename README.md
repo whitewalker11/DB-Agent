@@ -11,7 +11,7 @@ The **Agent Development Kit (ADK)** by **Google** is a powerful open-source fram
 
 ## 🧠 What is the DB Agent?
 
-One of the most practical applications of ADK is the **Database Agent (DB Agent)** — a conversational assistant that allows users to interact with a **PostgreSQL database** using **natural language**.
+One of the most practical applications of Agent Developemt is the **Database Agent (DB Agent)** — a conversational assistant that allows users to interact with a **PostgreSQL database** using **natural language**.
 
 ### ✨ What DB Agent Can Do:
 - Understand questions like “How many users signed up last week?”
