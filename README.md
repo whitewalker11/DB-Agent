@@ -3,26 +3,51 @@
 Welcome to the **DB Agent**, a powerful conversational AI interface that allows you to interact with your **PostgreSQL database** using **natural language queries**. Built using **Google's Agent Development Kit (ADK)**, this agent bridges the gap between human language and database operations.
 
 ---
+## 🔧 What is ADK?
 
-## 🔧 What is the Agent Development Kit (ADK)?
-
-The **Agent Development Kit (ADK)** by Google is a framework to build smart, modular AI agents powered by **LLMs** (like Gemini). It simplifies the agent-building process, making tools easier to create, invoke, and manage.
-
-### **Key Advantages**
-
-- ✅ **Abstracts LLM Logic**: No need to manage complex LLM orchestration.
-- 📊 **Modular Tooling**: Tools are clean, reusable Python functions.
-- 🤖 **Intelligent Reasoning**: The LLM decides when to invoke which tool.
-- 🌎 **Deployment-Ready**: Easily plug into production.
+The **Agent Development Kit (ADK)** by **Google** is a powerful open-source framework that enables developers to build **modular, intelligent agents** using **Large Language Models (LLMs)** like **Gemini**. ADK abstracts away the complexity of tool orchestration, prompt engineering, and reasoning, making it easier to deploy LLM-powered systems into production.
 
 ---
 
-## 🔍 How It Works
+## 🧠 What is the DB Agent?
 
-1. **User asks a question** (e.g., "How many users signed up last month?")
-2. The **LLM interprets** and routes it to the correct **tool**
-3. The **tool queries the DB** using `psycopg2`
-4. Output is returned, parsed, and sent back to the user
+One of the most practical applications of ADK is the **Database Agent (DB Agent)** — a conversational assistant that allows users to interact with a **PostgreSQL database** using **natural language**.
+
+### ✨ What DB Agent Can Do:
+- Understand questions like “How many users signed up last week?”
+- Automatically generate and execute **read-only SQL queries**
+- Return human-friendly summaries of the result
+- Ensure safety by limiting query types and access
+
+---
+
+## ✅ Key Advantages of ADK
+
+| Feature                  | Description |
+|--------------------------|-------------|
+| 🔍 Abstracts LLM Logic   | No manual prompting or chaining — just tools and intent |
+| 🛠️ Modular Tooling       | Tools are simple, clean Python functions |
+| 🧠 Intelligent Reasoning  | The LLM chooses the right tool at the right time |
+| 🚀 Deployment-Ready       | Built-in support for production use cases |
+
+---
+
+## 🔄 How It Works
+
+1. **User Input**:  
+   > _“List all active users from last month”_
+
+2. **LLM Agent**:  
+   - Parses the natural language query  
+   - Selects the appropriate tool
+
+3. **Tool Execution**:  
+   - Constructs SQL using `psycopg2`  
+   - Executes read-only query securely
+
+4. **Response**:  
+   - Parses the result  
+   - Returns a friendly response to the user
 
 ---
 
