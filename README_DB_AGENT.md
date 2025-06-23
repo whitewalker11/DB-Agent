@@ -1,134 +1,74 @@
+# 🤖 DB Agent - Conversational Database Assistant
 
-# 🤖 DB Agent - Conversational PostgreSQL Assistant
+Welcome to the DB Agent, a powerful conversational AI interface that allows you to interact with your PostgreSQL database using natural language queries. This project demonstrates how to build intelligent agents that bridge the gap between human language and complex database operations.
 
-Welcome to the **DB Agent**, a powerful conversational AI interface that allows you to interact with your **PostgreSQL database** using **natural language queries**. Built using **Google's Agent Development Kit (ADK)**, this agent bridges the gap between human language and database operations.
+---
+
+## 🧰 Project Structure
+
+This repository contains two primary implementations:
+
+- **Single-Agent DB Agent**: A straightforward implementation where a single agent handles all tasks.
+- **Multi-Agent DB Agent**: A more advanced architecture where a root agent delegates tasks to specialized sub-agents.
 
 ---
 
 ## 🔧 What is the Agent Development Kit (ADK)?
 
-The **Agent Development Kit (ADK)** by Google is a framework to build smart, modular AI agents powered by **LLMs** (like Gemini). It simplifies the agent-building process, making tools easier to create, invoke, and manage.
+The **Agent Development Kit (ADK)** by Google is a framework designed to build smart, modular, and reliable AI agents powered by Large Language Models (LLMs) like Gemini.
+
+### ✨ Key Advantages of ADK:
+- **Abstracts LLM Logic**: No need to manage prompting, orchestration, or loops.
+- **Modular Tooling**: Tools are simple Python functions—clean and reusable.
+- **Intelligent Reasoning**: LLMs decide which tool to invoke based on intent.
+- **Deployment-Ready**: Local or production deployment made easy.
 
 ---
 
-## 🧠 Architecture Overview
+## 🧠 General Architecture Overview
 
-The agent architecture supports both single-agent and multi-agent setups, where sub-agents may handle specialized responsibilities:
+### Workflow:
+1. **User Interaction**: User asks a question in plain language.
+2. **LLM Interpretation**: Agent uses Gemini (or another LLM) to understand the intent.
+3. **Tool Invocation**: The agent chooses and runs an appropriate tool (e.g., `run_query`, `convert_to_sql`).
+4. **Database Interaction**: The tool connects to PostgreSQL using `psycopg2` and executes SQL.
+5. **Response Generation**: Results are translated into human-readable responses.
 
-- **RootAgent**: Orchestrates communication and delegates tasks to sub-agents (in multi-agent setups).
-- **Sub Agents** (optional):
-  - Query, Schema, Analysis, or Visual sub-agents
-- **Tools**: Encapsulated Python functions that interact with the database and return results to the user.
-
----
-
-## 🗂 Project Structure (Generic)
-
-```
-db_agent/
-├── agent.py                 # Root agent definition
-├── config.py                # DB configuration
-├── __init__.py
-├── prompt.py
-├── tools/
-│   ├── db_tools.py
-│   ├── nl2sql_tool.py
-│   ├── schema_tools.py
-│   ├── analysis_tools.py
-│   └── visual_tools.py
-```
+### Multi-Agent Setup:
+- **RootAgent**: Handles high-level delegation.
+- **QueryAgent / SchemaAgent / AnalysisAgent**: Specialized sub-agents execute focused tasks.
 
 ---
 
-## ⚙️ Setup Instructions
+## 🚀 Use Cases
 
-### 🔐 Configuration
+DB Agents can transform how teams interact with data. Example use cases include:
 
-Update your `config.py` with PostgreSQL connection details:
-
-```python
-DB_CONFIG = {
-    "host": "your-db-host",
-    "database": "your-db-name",
-    "user": "your-db-user",
-    "password": "your-db-password",
-    "port": 5432
-}
-```
+- **SQL-less Business Intelligence**: Empower non-technical users to query data using natural language.
+- **Conversational Database Bots**: Integrate with Slack or dashboards to answer data queries.
+- **Automated Reporting & Dashboards**: Automatically generate visualizations or reports.
+- **Rapid Data Exploration**: Help data teams inspect schemas and perform analysis quickly.
 
 ---
 
-### 📦 Installation
+## 📂 Getting Started
 
-```bash
-pip install google-adk psycopg2-binary openai
-```
+To dive in, refer to the individual README files in each directory:
 
----
-
-## 🚀 Run Agent
-
-```bash
-adk run db_agent
-# or
-adk web db_agent
-```
+- [`single-agent/README.md`](./single-agent/README.md)
+- [`multi-agent/README.md`](./multi-agent/README.md)
 
 ---
 
-## 🔍 Example Interactions
-
-- "List all tables" → `list_tables()`
-- "Describe the users table" → `describe_table("users")`
-- "Find correlation between age and income" → `compute_correlation("users", "age", "income")`
-- "Show total sales over time" → Visualization tools
-
----
-
-## 🚀 Tools Available
-
-### 🔢 Basic Querying
-
-- `run_query(query: str)`
-- `run_custom_sql(query: str)`
-
-### 📄 Schema Introspection
-
-- `list_tables()`
-- `describe_table(table_name)`
-- `get_foreign_keys(table_name)`
-- `get_primary_keys_for_table(table_name)`
-- `get_table_schema_json(table_name)`
-
-### 📊 Data Exploration
-
-- `count_rows(table)`
-- `search_in_table(table, column, value)`
-- `top_k_column_values(table, column)`
-- `numeric_column_stats(table, column)`
-- `time_series_summary(table, date_column, agg_column)`
-- `compute_correlation(table, col1, col2)`
-
-### 📦 Monitoring
-
-- `get_table_size(table)`
-- `get_latest_entries_from_table(table)`
-
-### 🧠 NL → SQL Tool (OpenAI)
-
-- `convert_to_sql(nl_query: str, table_context: Optional[str])`
+## 🛠 Technologies Used
+- Python
+- PostgreSQL
+- psycopg2
+- Google ADK
+- Gemini / LLMs
 
 ---
 
-## 🌍 Use Cases
+## 📄 License
 
-- SQL-less business intelligence
-- Conversational database bots
-- Data exploration by non-technical users
-- Automated reports and dashboards
-
----
-
-## 🎉 Summary
-
-The **DB Agent** transforms your database into a smart assistant. Whether you're building a single-agent or multi-agent system, it provides modular tools and natural language understanding using LLMs, ideal for modern data workflows.
+MIT License © 2025
