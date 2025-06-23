@@ -3,10 +3,11 @@ from openai import OpenAI
 from .. import config
 
 
+OPEN_AI_KEY = config.OPEN_AI_KEY
+
 
 # Initialize OpenAI client with API key from config
-client = OpenAI()
-
+client = OpenAI(api_key=OPEN_AI_KEY)
 def convert_to_sql(nl_query: str, table_context: Optional[str] = "") -> str:
     """
     Tool Name: convert_to_sql
