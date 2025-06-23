@@ -7,7 +7,7 @@ Welcome to the DB Agent, a powerful conversational AI interface that allows you 
 
 ## 🎥 Demo Video
 
-[![Watch the demo](assets/demo.gif)
+![Watch the demo](assets/demo.gif)
 
 
 ## 🧰 Project Structure
